@@ -27,7 +27,7 @@ __global__ void euler_step_state_krnl(double* prevstate, double* state, size_t M
 
 }
 
-__device__ double compute_individual_step_krnl(double left, double self, double right, double adv_coeff, double diff_coeff)
+__device__ double inline compute_individual_step_krnl(double left, double self, double right, double adv_coeff, double diff_coeff)
 {
 	return self - adv_coeff * (right - left) + diff_coeff * (left + right - 2 * self);
 }

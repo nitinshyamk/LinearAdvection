@@ -61,9 +61,11 @@ public:
 			swap(f, f_prev);
 
 			euler_step(f_prev, f, adv_coeff, diff_coeff);
-			compute_analytical_solution(a, p, time, h);
-			err = compute_err(f, a, errv);
+			//compute_analytical_solution(a, p, time, h);
+			//err = compute_err(f, a, errv);
 			time += p.dt;
+
+			if (t % 1000 == 0) std::cout << time << std::endl;
 		}
 	}
 
@@ -88,7 +90,7 @@ public:
 		}
 
 		if (p.dt >= dt_max)
-			throw std::out_of_range("dt exceeds maximum allowed dt");
+			error_to_user("dt exceeds maximum allowed dt");
 	}
 
 	/// <summary>
